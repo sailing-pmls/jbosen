@@ -1,0 +1,21 @@
+apply plugin:'application'
+mainClassName = "org.petuum.app.matrixfact.MatrixFact"
+
+// create a single Jar with all dependencies
+task buildMatrixFact(type: Jar) {
+	manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    baseName = "MatrixFact"
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    compile 'args4j:args4j:2.0.16'
+    compile project(':jbosen')
+    compile 'org.apache.hadoop:hadoop-hdfs:' + yarnVersion
+    compile 'org.apache.hadoop:hadoop-common:' + yarnVersion
+    testCompile 'junit:junit:4.11'
+}
