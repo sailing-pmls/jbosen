@@ -1,7 +1,7 @@
-# JBosen
+# JBösen
 
-JBosen is a library for writing data-parallel machine learning applications. It provides a table interface implemented using a parameter server architecture and fully supports the stale-synchronous parallel consistency model. For more information about JBosen, please see our [wiki](https://github.com/petuum/jbosen/wiki). JavaDoc-style documentation can be found [here](http://petuum.github.io/jbosen/javadoc/index.html).
+JBösen is a library for writing data-parallel machine learning applications. It provides a key-value storage interface implemented using a parameter server architecture, and fully supports the stale-synchronous parallel consistency model. For more information about JBösen, please see our [wiki](https://github.com/petuum/jbosen/wiki). JavaDoc-style documentation can be found [here](http://petuum.github.io/jbosen/javadoc/index.html).
 
-JBosen is derived from our C++ project, [Bosen](https://github.com/petuum/bosen).
+JBösen is derived from our C++ project, [Bösen](https://github.com/petuum/bosen).
 
 For support, please send email to petuum-user@googlegroups.com. Please provide your name and affiliation when requesting support; we do not support anonymous inquiries.
