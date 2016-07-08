@@ -4,6 +4,11 @@
    :maxdepth: 2
    
    self
+   building
+   launch-ssh
+   launch-yarn
+   writing
+   matrix-fact
 ```
 
 # Home
