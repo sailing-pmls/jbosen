@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # JBosen documentation build configuration file, created by
-# sphinx-quickstart on Fri Jul  8 13:24:50 2016.
+# sphinx-quickstart on Wed Jun  8 19:22:52 2016.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -20,7 +20,16 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+import recommonmark
+
+from recommonmark.parser import CommonMarkParser
+from recommonmark.transform import AutoStructify
+
 # -- General configuration ------------------------------------------------
+
+source_parsers = {
+  '.md': CommonMarkParser,
+}
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #
@@ -32,13 +41,11 @@
 extensions = []
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ['templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
-#
-# source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+source_suffix = ['.rst', '.md']
 
 # The encoding of source files.
 #
@@ -49,7 +56,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'JBosen'
-copyright = u'2016, Petuum'
+copyright = u'2016, Carnegie Mellon University'
 author = u'Petuum'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -119,7 +126,7 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+# html_theme = 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -153,7 +160,7 @@ html_theme = 'alabaster'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['static']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -260,7 +267,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'JBosen.tex', u'JBosen Documentation',
-     u'Petuum', 'manual'),
+     u'Petuum, Inc.', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -330,3 +337,13 @@ texinfo_documents = [
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #
 # texinfo_no_detailmenu = False
+
+# Set up recommonmark
+docs_root = 'http://docs.petuum.com/projects/petuum-jbosen/en/latest/'
+def setup(app):
+  app.add_config_value('recommonmark_config', {
+    'url_resolver': lambda url: docs_root + url,
+    'enable_auto_toc_tree': False,
+#    'auto_toc_tree_section': 'Contents',
+  }, True)
+  app.add_transform(AutoStructify)
