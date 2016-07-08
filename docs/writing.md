@@ -1,3 +1,5 @@
+# Writing an Application
+
 The main interface to JBösen is the `PsTableGroup` class, found in the package `org.petuum.jbosen`. In general, a JBösen application will do the following:
 
 1. Initialize the global `PsTableGroup` instance.
@@ -28,7 +30,7 @@ For example, an application may begin as follows:
         ...
     }
 
-### Using command-line arguments
+## Using command-line arguments
 
 For convenience, it is also possible to automatically fill out a `PsConfig` object by parsing command line arguments:
 
