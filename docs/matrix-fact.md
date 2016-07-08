@@ -1,8 +1,8 @@
-## Matrix Factorization App ##
-The Matrix Factorization App decomposes an N by M matrix D into two lower-rank matrices L and R where L * R = D, where L and R have sizes N by K and K by M (for a user-specified K). The algorithm used in this app is the Stochastic Gradient Descent (SGD) algorithm to optimize an objective function by applying gradient descent to random subsets of the data.
-## Running ##
+# Matrix Factorization
 
-#### Running Matrix Factorization on Local Clusters ####
+The Matrix Factorization App decomposes an N by M matrix D into two lower-rank matrices L and R where L * R = D, where L and R have sizes N by K and K by M (for a user-specified K). The algorithm used in this app is the Stochastic Gradient Descent (SGD) algorithm to optimize an objective function by applying gradient descent to random subsets of the data.
+
+## Running Matrix Factorization on Local Clusters
 1. Read and follow [[this|Building JBosen]] section of the Wiki. 
 2. Run:  
     `gradle buildMatrixFact`
@@ -48,7 +48,7 @@ Besides the required command line argument `-dataFile` for the app, the Matrix F
 To use these, simply add them onto the --app_args argument. For example:  
 `python scripts/jbosen_run.py ... --app_args "-dataFile <path to data file> -numEpoch 10 -staleness 0 ... -outputPrefix output"`.
 
-#### Running Matrix Factorization on YARN ####
+## Running Matrix Factorization on YARN
 
 1. Read and follow [[this|Building JBosen]] section of the Wiki.
 2. Read and follow the section above to make sure the Matrix Factorization app runs correctly on the local machine.
