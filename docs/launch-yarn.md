@@ -1,4 +1,6 @@
-### Building the YARN Client and Application Master ###
+# Launch Using YARN
+
+## Building the YARN Client and Application Master
 First, run
 
 ```
@@ -20,7 +22,7 @@ Or download the jar files directly from our repo:
 
 * [YARN ApplicationMaster 2.7.0](https://petuum.github.io/jbosen/resources/yarnApplicationMaster-2.7.0.jar)
 
-### Running on YARN ###
+## Running on YARN
 For a step by step instruction on a quick start to run SSP Demo, please follow [[here|Quick Start YARN]].   
 For a step by step instruction on how to run Matrix Factorization app on YARN, please follow [[here|Matrix Factorization]].
 
@@ -28,16 +30,16 @@ For running apps on YARN, we have provided for you a running script `jbosen_yarn
 Usage: `python scripts/jbosen_yarn_run.py --client_jar_path <Path to the yarnClient.jar> --app_master_jar_path <Path to the application master jar file> --ps_app_jar_local_path <Path to the ps app jar file>`    
 These are the required command line arguments for running the ps app on YARN. For further usages, please consult with `python scripts/jbosen_yarn_run.py -h`or [[jbosen_yarn_run.py all command line arguments explained|jbosen_yarn_run.py command line arguments]].
 
-### Extra Files ###
+## Extra Files
 As part of the YARN requirement, files accessed by the app need to be on HDFS. Therefore, users need to put data files onto HDFS manually and pass the complete HDFS paths (with the format hdfs://\<domain\>/\<path\>) of the files as command line arguments.
 
-### Things to watch out for ###
+## Things to watch out for
 * YARN client, application master and JBösen app jar files need to be on local filesystem. The YARN client takes care of transferring the jar files into HDFS and containers.
 * All other files that are accessed by the JBösen app need to be transferred to HDFS manually, as mentioned above.
 * To access the application master and JBösen app log, use `yarn logs -applicationId <application id>` where the application id will be printed as part of the YARN client log.
 * In order to use `--ps_hdfs_prefix <HDFS path>` flag correctly, the `<HDFS path>` needs to have r/w permission for both current login user and YARN user, if they are different. Otherwise, users may see permission related exceptions with YARN. 
 
-### Related YARN and HDFS Command Line Tools and Functionalities ###
+## Related YARN and HDFS Command Line Tools and Functionalities
 
 In the process of running the PS applications on YARN, there is no doubt some of the YARN and HDFS command line tools and functionalities will come in handy.
 
