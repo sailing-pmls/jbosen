@@ -23,12 +23,12 @@ Or download the jar files directly from our repo:
 * [YARN ApplicationMaster 2.7.0](https://petuum.github.io/jbosen/resources/yarnApplicationMaster-2.7.0.jar)
 
 ## Running on YARN
-For a step by step instruction on a quick start to run SSP Demo, please follow [[here|Quick Start YARN]].   
-For a step by step instruction on how to run Matrix Factorization app on YARN, please follow [[here|Matrix Factorization]].
+For a step by step instruction on a quick start to run SSP Demo, please follow [here](yarn-quickstart.md).   
+For a step by step instruction on how to run Matrix Factorization app on YARN, please follow [here](matrix-fact.md).
 
 For running apps on YARN, we have provided for you a running script `jbosen_yarn_run.py` under the root directory.    
 Usage: `python scripts/jbosen_yarn_run.py --client_jar_path <Path to the yarnClient.jar> --app_master_jar_path <Path to the application master jar file> --ps_app_jar_local_path <Path to the ps app jar file>`    
-These are the required command line arguments for running the ps app on YARN. For further usages, please consult with `python scripts/jbosen_yarn_run.py -h`or [[jbosen_yarn_run.py all command line arguments explained|jbosen_yarn_run.py command line arguments]].
+These are the required command line arguments for running the ps app on YARN. For further usages, please consult with `python scripts/jbosen_yarn_run.py -h`or [jbosen_yarn_run.py all command line arguments explained](jbosen-yarn-run-args.md).
 
 ## Extra Files
 As part of the YARN requirement, files accessed by the app need to be on HDFS. Therefore, users need to put data files onto HDFS manually and pass the complete HDFS paths (with the format hdfs://\<domain\>/\<path\>) of the files as command line arguments.
