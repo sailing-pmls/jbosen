@@ -13,7 +13,7 @@ For your convenience, we have provided a generic launch script `bosen_run.py` un
 ```
 python scripts/jbosen_run.py <path to host file> <app jar file path> <app main class name>
 ```
-For additional command line argument options, please see `python scripts/jbosen_run.py -h` as well as [[this guide | jbosen_run.py command line arguments]]. To kill stray JBösen processes after running, please see [[here | Killing all JBösen related process]].
+For additional command line argument options, please see `python scripts/jbosen_run.py -h` as well as [this guide](jbosen-run-args.md). To kill stray JBösen processes after running, please see [here](killing.md).
 
 The launch script provided assumes that password-less ssh is enabled to each of the ip addresses listed.
 
