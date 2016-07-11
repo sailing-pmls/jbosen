@@ -5,6 +5,7 @@
    
    self
    building
+   cmdline-args
    launch-ssh
    launch-yarn
    writing
