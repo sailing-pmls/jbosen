@@ -9,6 +9,7 @@
    launch-yarn
    writing
    matrix-fact
+   random-forest
 ```
 
 # Home
