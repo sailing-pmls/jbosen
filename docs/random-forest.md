@@ -14,8 +14,11 @@ Note that staleness does not play a role in this application for it is not itera
 4. Prepare a data file.
     The input data needs to be in the libsvm format(We default that the index of the features starts from 1).
 5. Run:  
-    `python scripts/jbosen_run.py <path to host file> app/forest/build/libs/forest-all.jar 
-    org.petuum.app.forest.Forest --app_args "-dataFile <path to data file> -numFeatures 100"`  
+    ```
+    python scripts/jbosen_run.py <path to host file> app/forest/build/libs/forest-all.jar 
+    
+    org.petuum.app.forest.Forest --app_args "-dataFile <path to data file> -numFeatures 100"
+    ```
     
     If you haven't prepared a host file, you may use `machinefile/sample_machinefile` to simulate two hosts on your local machine.
 
@@ -71,9 +74,13 @@ Besides the required command line argument `-dataFile` for the app, the Random F
     Default value: "sqrt"
 
 To use these, simply add them onto the --app_args argument. For example: if you want to test on the widely used dataset [mnist.scale](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/mnist.scale.bz2) and [mnist.scale.t](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/mnist.scale.t.bz2), you can `wget` these sets and then `bzip2 -d` them respectively. After that, you can just type the command below and wait for results:
-`python scripts/jbosen_run.py machinefile/sample_machinefile app/forest/build/libs/forest-all.jar 
- org.petuum.app.forest.Forest --app_args "-dataFile mnist.scale -numClasses 10 -numFeatures 784 
- -depth 16 -numTrees 50 -dataFileT mnist.scale.t"`.
+```
+python scripts/jbosen_run.py machinefile/sample_machinefile app/forest/build/libs/forest-all.jar 
+ 
+org.petuum.app.forest.Forest --app_args "-dataFile mnist.scale -numClasses 10 -numFeatures 784 
+ 
+-depth 16 -numTrees 50 -dataFileT mnist.scale.t"
+```
 
 ## Running Random Forest on YARN
 
@@ -87,10 +94,16 @@ Make sure the directory on HDFS has the appropriate permission for the user and 
     `gradle buildYarn`   
     This should create two jar files, yarnClient.jar and yarnApplicationMaster.jar under `jbosen_yarn/build/libs`.
 6. Run:  
-    `python scripts/jbosen_yarn_run.py --client_jar_path jbosen_yarn/build/libs/yarnClient.jar 
+    ```
+    python scripts/jbosen_yarn_run.py --client_jar_path jbosen_yarn/build/libs/yarnClient.jar
+    
     --app_master_jar_path jbosen_yarn/build/libs/yarnApplicationMaster.jar --ps_app_jar_local_path 
+    
     app/forest/build/libs/forest-all.jar --ps_app_args "-dataFile <Path to data file on HDFS> ... 
-    -outputFile <output file on HDFS>" --num_nodes X`  
+    
+    -outputFile <output file on HDFS>" --num_nodes X
+    ```
+    
     where `X` is the number of nodes (machines) to use.
 
     **Note: HDFS paths must be in this format: `hdfs://<domain>/<path>`**
@@ -101,11 +114,17 @@ Make sure the directory on HDFS has the appropriate permission for the user and 
     `yarn logs -applicationId <application id>`
 
 Furthermore, as explained in "Running Random Forest on Local Clusters" section, the Random Forest app can take extra optional arguments. Users can simply pass these arguments in `--ps_app_args`. Note that all HDFS paths provided to the app need to be in the following format of `hdfs://<domain>/<path>`. For the mnist example, you can use the command below to test on yarn:
-`python scripts/jbosen_yarn_run.py --client_jar_path jbosen_yarn/build/libs/yarnClient.jar 
+```
+python scripts/jbosen_yarn_run.py --client_jar_path jbosen_yarn/build/libs/yarnClient.jar 
+
 --app_master_jar_path jbosen_yarn/build/libs/yarnApplicationMaster.jar --ps_app_jar_local_path 
+
 app/forest/build/libs/forest-all.jar --ps_app_args "-dataFile hdfs://<domain>/<pathToMnist> 
+
 -numClasses 10 -numFeatures 784 -depth 16 -numTrees 50 -dataFileT hdfs://<domain>/<pathToMnistT> 
--hdfs -lossFile hdfs://<domain>/<pathToLossFile>" --num_nodes 2`
+
+-hdfs -lossFile hdfs://<domain>/<pathToLossFile>" --num_nodes 2
+```
 
 In addition to these optional arguments, the JBösen system can be configured using extra command line arguments.  When running on local machines, the jbosen_run.py scripts takes care of these **JBösen** system configurations. However, when using YARN, users needs to pass in these system arguments as part of the --ps_app_args. A detailed explanation on these arguments are [here](http://docs.petuum.com/projects/petuum-jbosen/en/latest/cmdline-args.html).
 
