@@ -71,8 +71,6 @@ Besides the required command line argument `-dataFile` for the app, the Random F
 To use these, simply add them onto the --app_args argument. For example: if you want to test on the widely used dataset [mnist.scale](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/mnist.scale.bz2) and [mnist.scale.t](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/mnist.scale.t.bz2), you can `wget` these sets and then `bzip2 -d` them respectively. After that, you can just type the command below and wait for results:
 `python scripts/jbosen_run.py machinefile/sample_machinefile app/forest/build/libs/forest-all.jar org.petuum.app.forest.Forest --app_args "-dataFile mnist.scale -numClasses 10 -numFeatures 784 -depth 16 -numTrees 50 -dataFileT mnist.scale.t"`.
 
-We have tested our random forest app on some large datasets. For example, to handle the [HIGGS](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/HIGGS.bz2) dataset, we use 4 machines, each with 16 threads, to train 640 trees. That's to say, each thread trains 10 trees. When we set `samSample` to 0.1 and set `depth` to 16, it takes about 10 minutes to train and test the dataset, and the AUC score is 0.8055. When we set `samSample` to 0.2 and set `depth` to 18, the whole process takes about 20 minutes, and the AUC score is 0.8116. These results are similar to the score mentioned in the [paper](https://arxiv.org/pdf/1402.4735v2.pdf). Therefore, we think our app is a good choice for you if you want to handle a problem fast and accurately by using random forest.
-
 ## Running Random Forest on YARN
 
 1. Read and follow [this](http://docs.petuum.com/projects/petuum-jbosen/en/latest/building.html) section of the Wiki.
@@ -101,5 +99,10 @@ Furthermore, as explained in "Running Random Forest on Local Clusters" section, 
 In addition to these optional arguments, the JBösen system can be configured using extra command line arguments.  When running on local machines, the jbosen_run.py scripts takes care of these **JBösen** system configurations. However, when using YARN, users needs to pass in these system arguments as part of the --ps_app_args. A detailed explanation on these arguments are [here](http://docs.petuum.com/projects/petuum-jbosen/en/latest/cmdline-args.html).
 
 **Note: when using `-numLocalWorkerThreads` to set the number of worker threads on each of the client as well as the `-numLocalCommChannels` option, be sure to change the option `--container_vcores` to an appropriate number.**
+    
+## Benchmark
+
+We have tested our random forest app on some large datasets. For example, to handle the [HIGGS](https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/binary/HIGGS.bz2) dataset, we use 4 machines, each with 16 threads, to train 640 trees. That's to say, each thread trains 10 trees. When we set `samSample` to 0.1 and set `depth` to 16, it takes about 10 minutes to train and test the dataset, and the AUC score is 0.8055. When we set `samSample` to 0.2 and set `depth` to 18, the whole process takes about 20 minutes, and the AUC score is 0.8116. These results are similar to the score mentioned in the [paper](https://arxiv.org/pdf/1402.4735v2.pdf). Therefore, we think our app is a good choice for you if you want to handle a problem fast and accurately by using random forest.
+
     
 [Random Forest]: http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm
