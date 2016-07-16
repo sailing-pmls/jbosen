@@ -1,0 +1,1 @@
+java -jar build/libs/forest-all.jar -depth 2 -clientId 0 -dataFile test_data/tree -numFeatures 2 -hostFile localhost -numClasses 4 -numLocalWorkerThreads 8 -outputFile model/out -treesPerWorker 10 -batchSize 80
