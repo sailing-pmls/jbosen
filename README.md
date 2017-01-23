@@ -4,4 +4,4 @@ JBösen is a library for writing data-parallel machine learning applications. It
 
 JBösen is derived from our C++ project, [Bösen](https://github.com/petuum/bosen).
 
-For support, please send email to petuum-user@googlegroups.com. Please provide your name and affiliation when requesting support; we do not support anonymous inquiries.
+For support, please send email to pmls-support@googlegroups.com. Please provide your name and affiliation when requesting support; we do not support anonymous inquiries.
